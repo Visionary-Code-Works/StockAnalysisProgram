@@ -20,9 +20,9 @@ setup(
         "Development Status :: 4 - Beta"
     ],
     install_requires=[
-        yfinance = "^0.1.63",
-        matplotlib = "^3.3.4",
-        pandas = "^1.2.4",
+        "yfinance",
+        "matplotlib",
+        "pandas",
     ],
     python_requires='>=3.8',
 )
