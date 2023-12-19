@@ -1,5 +1,7 @@
 # Documentation for Stock Analysis Program
 
+[![Upload Python Package](https://github.com/Visionary-Code-Works/stock-analysis-program/actions/workflows/python_publish.yml/badge.svg)](https://github.com/Visionary-Code-Works/stock-analysis-program/actions/workflows/python_publish.yml)
+
 ## Overview
 
 This stock analysis program comprises several Python classes designed to fetch and visualize various financial data and metrics related to stocks. The program is modular, allowing easy integration of its components into larger financial analysis systems or applications.
