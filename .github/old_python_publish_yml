@@ -13,13 +13,14 @@ jobs:
       uses: actions/setup-python@v5
       with:
         python-version: '3.x'
-    - name: Install Poetry
+    - name: Install dependencies
       run: |
         pip install --upgrade pip
-        pip install poetry
-    - name: Build and publish to PyPI
+        pip install setuptools wheel twine
+    - name: Build and publish
       env:
-        POETRY_PYPI_TOKEN_PYPI: ${{ secrets.PYPI_API_TOKEN }}
+        TWINE_USERNAME: __token__
+        TWINE_PASSWORD: ${{ secrets.PYPI_API_TOKEN }}
       run: |
-        poetry build
-        poetry publish
+        python setup.py sdist bdist_wheel
+        twine upload dist/*
