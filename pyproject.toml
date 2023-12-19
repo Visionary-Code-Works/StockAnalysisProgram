@@ -1,0 +1,34 @@
+[tool.poetry]
+name = "stock-analysis-program"
+version = "1.0.0"
+description = "A Python-based toolkit for fetching and visualizing financial data and metrics for stocks."
+authors = ["Thaddeus Thomas <thaddeus.r.thomas@gmail.com>"]
+license = "MIT"
+
+# Optional: if the project is available on a URL or is a part of a larger project.
+homepage = "https://github.com/visionary-code-works/stock-analysis-program"
+repository = "https://github.com/visionary-code-works/stock-analysis-program"
+documentation = "https://github.com/visionary-code-works/stock-analysis-program/docs"
+
+# Classifiers help users find your project by categorizing it.
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Intended Audience :: Financial and Insurance Industry",
+    "Topic :: Office/Business :: Financial :: Investment",
+    "Development Status :: 4 - Beta"
+]
+
+[tool.poetry.dependencies]
+python = "^3.8"
+yfinance = "^0.1.63"
+matplotlib = "^3.3.4"
+pandas = "^1.2.4"
+
+[tool.poetry.dev-dependencies]
+pytest = "^6.2.2"
+
+[build-system]
+requires = ["poetry>=0.12"]
+build-backend = "poetry.masonry.api"
