@@ -1,0 +1,5 @@
+pytest
+pandas>=1.0
+numpy>=1.18
+matplotlib>=3.2
+yfinance
