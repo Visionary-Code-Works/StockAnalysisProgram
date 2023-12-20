@@ -1,8 +1,11 @@
 [tool.poetry]
 name = "stock-analysis-program"
-version = "1.0.3"
+version = "1.0.4"
 description = "A Python-based toolkit for fetching and visualizing financial data and metrics for stocks."
-authors = ["Thaddeus Thomas <thaddeus.r.thomas@gmail.com>"]
+authors = [
+    "Thaddeus Thomas <thaddeus.r.thomas@gmail.com>", 
+    "Fernando McKenzie <fernando.a.mckenzie@live.com>"
+]
 license = "MIT"
 homepage = "https://github.com/visionary-code-works/stock-analysis-program"
 repository = "https://github.com/visionary-code-works/stock-analysis-program"
