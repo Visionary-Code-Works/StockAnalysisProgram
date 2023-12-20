@@ -12,7 +12,7 @@ etc., across multiple stocks.
 
 import matplotlib.pyplot as plt
 import pandas as pd
-from financial_metrics_fetcher import FinancialMetricsFetcher
+from fetcher.financial_metrics_fetcher import FinancialMetricsFetcher
 
 class FinancialMetricsPlotter:
     """A class for plotting financial metrics of stocks.

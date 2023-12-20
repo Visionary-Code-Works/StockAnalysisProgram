@@ -48,19 +48,22 @@ class FinancialMetricsFetcher:
             each ticker. Each row corresponds to a stock ticker, with columns
             for each financial metric.
         """
+        financial_data_list = []
+
         financial_data = pd.DataFrame()
         for ticker in self.tickers:
             stock = yf.Ticker(ticker)
             info = stock.info
 
             # Extract desired metrics and add them to the DataFrame
-            financial_data = financial_data.append({
+            financial_data_list.append({
                 'Ticker': ticker,
                 'Market Cap': info.get('marketCap'),
                 'PE Ratio': info.get('trailingPE'),
                 'Forward PE': info.get('forwardPE'),
                 'Price to Book': info.get('priceToBook'),
                 'Profit Margins': info.get('profitMargins')
-            }, ignore_index=True)
+            })
 
+        financial_data = pd.DataFrame(financial_data_list)
         return financial_data
