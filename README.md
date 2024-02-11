@@ -1,5 +1,7 @@
 # Stock Analysis Program
 
+[![Upload Python Package](https://github.com/Visionary-Code-Works/StockAnalysisProgram/actions/workflows/python_publish.yml/badge.svg)](https://github.com/Visionary-Code-Works/StockAnalysisProgram/actions/workflows/python_publish.yml)
+
 ## Overview
 
 The Stock Analysis Program is a Python-based toolkit designed to fetch and visualize financial data and metrics for stocks. It is ideal for financial analysts, traders, and anyone interested in stock market analysis. The program offers functionalities such as retrieving historical stock data, computing moving averages, analyzing revenue growth, and plotting financial metrics.
