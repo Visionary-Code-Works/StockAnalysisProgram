@@ -57,6 +57,11 @@ price_plotter.plot_closing_prices('2021-01-01', '2021-12-31')
 
 For detailed documentation on each component, please refer to the `docs` directory.
 
+[Workflow](./docs/Workflow.md)
+[Plotter](./docs/Plotter.md)
+[Fetcher](./docs/Fetcher.md)
+[Documentation](./docs/documentation.md)
+
 ## Contributing
 
 Contributions to enhance the program are welcome. Please fork the repository and submit a pull request with your changes.

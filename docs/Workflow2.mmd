@@ -1,0 +1,35 @@
+flowchart LR
+    A{{Start Application}} --> B((Main Menu))
+    B --> C{Exit}
+    B --> D([Use Stock Data Fetcher])
+    B --> E([Use Stock Summary Fetcher])
+    B --> F([Use Financial Metrics Fetcher])
+    B --> G([Use Revenue Growth Fetcher])
+    B --> H([Use Stock Price Plotter])
+    B --> I([Use Financial Metrics Plotter])
+    B --> J([Use Revenue Growth Plotter])
+    B --> K([Use Stock Volatility Plotter])
+    B --> L([Use Stock Exchange\nPerformance Plotter])
+    B --> M([Use Current Prices\nTicker Display])
+
+    D --> N[[Enter Stock Ticker]]
+    E --> O[[Enter Stock Tickers]]
+    F --> P[[Enter Stock Tickers\nfor Financial Metrics]]
+    G --> Q[[Enter Stock Tickers\nfor Revenue Growth]]
+    H --> R[[Enter Stock Tickers\nand Date Range\nfor Price Plotting]]
+    I --> S[[Enter Stock Tickers\nfor Financial Metrics Plotting]]
+    J --> T[[Enter Stock Tickers\nfor Revenue Growth Plotting]]
+    K --> U[[Enter Stock Tickers\nand Date Range\nfor Volatility Plotting]]
+    L --> V[[Enter Stock Index Symbols\nand Date Range]]
+    M --> W[[Enter Stock Tickers\nand Display Interval]]
+
+    N --> B
+    O --> B
+    P --> B
+    Q --> B
+    R --> B
+    S --> B
+    T --> B
+    U --> B
+    V --> B
+    W --> B
