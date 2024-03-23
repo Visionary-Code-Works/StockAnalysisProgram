@@ -9,16 +9,20 @@ stock analysis options, including data fetching, summary retrieval, and various
 plotting capabilities for stocks and financial indices.
 """
 
-from fetcher.stock_data_fetcher import StockDataFetcher
-from fetcher.stock_summary_fetcher import StockSummaryFetcher
-from fetcher.financial_metrics_fetcher import FinancialMetricsFetcher
-from fetcher.revenue_growth_fetcher import RevenueGrowthFetcher
-from plotter.stock_price_plotter import StockPricePlotter
-from plotter.financial_metrics_plotter import FinancialMetricsPlotter
-from plotter.revenue_growth_plotter import RevenueGrowthPlotter
-from plotter.stock_volatility_plotter import StockVolatilityPlotter
-from plotter.stock_exchange_performance_plotter import StockExchangePerformancePlotter
-from plotter.current_prices_ticker_display import CurrentPricesTickerDisplay
+from fetcher import (
+    StockDataFetcher,
+    StockSummaryFetcher,
+    FinancialMetricsFetcher,
+    RevenueGrowthFetcher,
+)
+from plotter import (
+    StockPricePlotter,
+    FinancialMetricsPlotter,
+    RevenueGrowthPlotter,
+    StockVolatilityPlotter,
+    StockExchangePerformancePlotter,
+    CurrentPricesTickerDisplay,
+)
 
 
 def use_stock_data_fetcher():
