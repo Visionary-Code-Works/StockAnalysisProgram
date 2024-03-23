@@ -1,9 +1,9 @@
 # Fetchers
 
-[Home](../README.md)
-[Workflow](./Workflow.md)
-[Plotter](./Plotter.md)
-[Documentation](./documentation.md)
+- [Home](../README.md)
+- [Workflow](./Workflow.md)
+- [Plotter](./Plotter.md)
+- [Documentation](./documentation.md)
 
 ## Overview
 
