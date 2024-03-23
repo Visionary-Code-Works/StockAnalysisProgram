@@ -9,9 +9,9 @@ The class facilitates a dynamic display of stock prices, simulating a stock
 ticker tape seen in trading platforms or financial news channels.
 """
 
-import yfinance as yf
-import time
 import os
+import time
+import yfinance as yf
 
 class CurrentPricesTickerDisplay:
     """

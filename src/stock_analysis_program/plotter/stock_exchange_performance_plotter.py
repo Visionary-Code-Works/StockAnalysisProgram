@@ -11,7 +11,6 @@ comparing market trends and index performances.
 
 import yfinance as yf
 import matplotlib.pyplot as plt
-import pandas as pd
 
 class StockExchangePerformancePlotter:
     """A class for comparing the performance of different stock indices.

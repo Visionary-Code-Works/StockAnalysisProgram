@@ -8,7 +8,7 @@ comparing the revenue growth trends of different companies.
 """
 
 import matplotlib.pyplot as plt
-from fetcher.revenue_growth_fetcher import RevenueGrowthFetcher
+from ..fetcher.revenue_growth_fetcher import RevenueGrowthFetcher
 
 
 class RevenueGrowthPlotter:

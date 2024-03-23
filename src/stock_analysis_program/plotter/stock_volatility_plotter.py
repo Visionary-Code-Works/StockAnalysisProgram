@@ -9,7 +9,6 @@ profile and stability of stocks.
 
 import yfinance as yf
 import matplotlib.pyplot as plt
-import pandas as pd
 
 
 class StockVolatilityPlotter:

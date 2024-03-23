@@ -1,7 +1,7 @@
 # tests/test_fetcher/test_financial_metrics_fetcher.py
 
 import pytest
-from src.fetcher.financial_metrics_fetcher import FinancialMetricsFetcher
+from src.stock_analysis_program.fetcher import FinancialMetricsFetcher
 
 def test_financial_metrics_fetcher():
     fetcher = FinancialMetricsFetcher(['AAPL'])

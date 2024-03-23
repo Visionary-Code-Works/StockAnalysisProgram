@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "stock-analysis-program"
-version = "1.0.5"
+version = "1.0.6"
 description = "A Python-based toolkit for fetching and visualizing financial data and metrics for stocks."
 authors = [
     "Thaddeus Thomas <thaddeus.r.thomas@gmail.com>",
@@ -24,13 +24,18 @@ packages = [
 
 [tool.poetry.dependencies]
 python = "^3.11"
-yfinance = "^0.2.33"
-matplotlib = "^3.8.0"
-pandas = "^2.1.1"
+yfinance = "^0.2.37"
+matplotlib = "^3.8.3"
+pandas = "^2.2.1"
 
 [tool.poetry.dev-dependencies]
-pytest = "^7.4.3"
+pytest = "^8.1.1"
+
+[[tool.poetry.source]]
+name = "StockAnalysisProgram"
+url = "https://github.com/Visionary-Code-Works/StockAnalysisProgram"
+priority = "primary"
 
 [build-system]
-requires = ["poetry>=1.71"]
+requires = ["poetry>=1.8.2"]
 build-backend = "poetry.masonry.api"
