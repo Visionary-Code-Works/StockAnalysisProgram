@@ -1,9 +1,9 @@
 # Plotter
 
-[Home](../README.md)
-[Workflow](./Workflow.md)
-[Fetcher](./Fetcher.md)
-[Documentation](./documentation.md)
+- [Home](../README.md)
+- [Workflow](./Workflow.md)
+- [Fetcher](./Fetcher.md)
+- [Documentation](./documentation.md)
 
 ## Overview
 
