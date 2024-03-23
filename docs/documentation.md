@@ -2,6 +2,11 @@
 
 [![Upload Python Package](https://github.com/Visionary-Code-Works/stock-analysis-program/actions/workflows/python_publish.yml/badge.svg)](https://github.com/Visionary-Code-Works/stock-analysis-program/actions/workflows/python_publish.yml)
 
+[Home](../README.md)
+[Workflow](./Workflow.md)
+[Plotter](./Plotter.md)
+[Fetcher](./Fetcher.md)
+
 ## Overview
 
 This stock analysis program comprises several Python classes designed to fetch and visualize various financial data and metrics related to stocks. The program is modular, allowing easy integration of its components into larger financial analysis systems or applications.
@@ -12,12 +17,16 @@ The program contains two main types of classes: Fetchers and Plotters.
 
 ### Fetchers
 
+[Link to detailed notes](./Fetcher.md)
+
 1. **StockDataFetcher**: Fetches historical stock data, moving averages, average trading volume, and key financial metrics for a given stock ticker.
 2. **StockSummaryFetcher**: Retrieves summary information for multiple stock tickers, including name, sector, industry, and key financial data.
 3. **FinancialMetricsFetcher**: Gathers financial metrics such as market cap, P/E ratio, and profit margins for a list of stock tickers.
 4. **RevenueGrowthFetcher**: Calculates year-over-year revenue growth for multiple stock tickers.
 
 ### Plotters
+
+[Link to detailed notes](./Plotter.md)
 
 1. **StockPricePlotter**: Visualizes stock prices and moving averages.
 2. **FinancialMetricsPlotter**: Plots histograms of financial metrics for a list of stocks.
@@ -27,6 +36,44 @@ The program contains two main types of classes: Fetchers and Plotters.
 6. **CurrentPricesTickerDisplay**: Displays current stock prices in a dynamic, ticker-like format.
 
 ## Usage
+
+```mermaid
+flowchart LR
+    A{{Start Application}} --> B((Main Menu))
+    B --> C{Exit}
+    B --> D([Use Stock Data Fetcher])
+    B --> E([Use Stock Summary Fetcher])
+    B --> F([Use Financial Metrics Fetcher])
+    B --> G([Use Revenue Growth Fetcher])
+    B --> H([Use Stock Price Plotter])
+    B --> I([Use Financial Metrics Plotter])
+    B --> J([Use Revenue Growth Plotter])
+    B --> K([Use Stock Volatility Plotter])
+    B --> L([Use Stock Exchange\nPerformance Plotter])
+    B --> M([Use Current Prices\nTicker Display])
+
+    D --> N[[Enter Stock Ticker]]
+    E --> O[[Enter Stock Tickers]]
+    F --> P[[Enter Stock Tickers\nfor Financial Metrics]]
+    G --> Q[[Enter Stock Tickers\nfor Revenue Growth]]
+    H --> R[[Enter Stock Tickers\nand Date Range\nfor Price Plotting]]
+    I --> S[[Enter Stock Tickers\nfor Financial Metrics Plotting]]
+    J --> T[[Enter Stock Tickers\nfor Revenue Growth Plotting]]
+    K --> U[[Enter Stock Tickers\nand Date Range\nfor Volatility Plotting]]
+    L --> V[[Enter Stock Index Symbols\nand Date Range]]
+    M --> W[[Enter Stock Tickers\nand Display Interval]]
+
+    N --> B
+    O --> B
+    P --> B
+    Q --> B
+    R --> B
+    S --> B
+    T --> B
+    U --> B
+    V --> B
+    W --> B
+```
 
 ### Fetchers-a
 

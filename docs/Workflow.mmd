@@ -1,0 +1,30 @@
+flowchart LR
+    A(Start Application) --> B{Main Menu}
+    B --> C[Exit Application]
+    B --> D[Data Fetching and Display]
+    B --> E[Data Plotting]
+    B --> F[Real-time Price Display]
+
+    D --> D1[Stock Data Fetcher]
+    D --> D2[Stock Summary Fetcher]
+    D --> D3[Financial Metrics Fetcher]
+    D --> D4[Revenue Growth Fetcher]
+
+    E --> E1[Stock Price Plotter]
+    E --> E2[Financial Metrics Plotter]
+    E --> E3[Revenue Growth Plotter]
+    E --> E4[Stock Volatility Plotter]
+    E --> E5[Stock Exchange Performance Plotter]
+
+    F --> F1[Current Prices Ticker Display]
+
+    D1 --> B
+    D2 --> B
+    D3 --> B
+    D4 --> B
+    E1 --> B
+    E2 --> B
+    E3 --> B
+    E4 --> B
+    E5 --> B
+    F1 --> B
