@@ -11,7 +11,6 @@ detailed stock analysis with ease.
 """
 
 import yfinance as yf
-import pandas as pd
 
 
 class StockDataFetcher:

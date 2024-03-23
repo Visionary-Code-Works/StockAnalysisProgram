@@ -1,8 +1,8 @@
 # tests/test_plotter/test_stock_exchange_performance_plotter.py
 
 import pytest
-from src.plotter.stock_exchange_performance_plotter import StockExchangePerformancePlotter
+from src.stock_analysis_program import StockExchangePerformancePlotter
 
-def test_stock_exchange_performance_plotter_initialization():
+def test_stock_exchange_performance_plotter():
     plotter = StockExchangePerformancePlotter(["^GSPC"])
     assert plotter is not None, "StockExchangePerformancePlotter should be initialized."

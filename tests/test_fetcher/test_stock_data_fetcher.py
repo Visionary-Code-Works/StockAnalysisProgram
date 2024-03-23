@@ -1,7 +1,7 @@
 # tests/test_fetcher/test_stock_data_fetcher.py
 
 import pytest
-from src.fetcher.stock_data_fetcher import StockDataFetcher
+from src.stock_analysis_program import StockDataFetcher
 
 def test_stock_data_fetcher():
     fetcher = StockDataFetcher("AAPL")

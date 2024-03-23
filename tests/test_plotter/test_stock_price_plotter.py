@@ -1,7 +1,7 @@
 # tests/test_plotter/test_stock_price_plotter.py
 
 import pytest
-from src.plotter.stock_price_plotter import StockPricePlotter
+from src.stock_analysis_program import StockPricePlotter
 
 def test_stock_price_plotter_initialization():
     plotter = StockPricePlotter(['AAPL'])
