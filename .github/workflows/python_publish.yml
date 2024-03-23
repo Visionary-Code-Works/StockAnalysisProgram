@@ -1,25 +1,30 @@
 name: Upload Python Package
 
 on:
-  release:
-    types: [created]
+  push:
+    tags:
+      - 'v*'
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4
+    
     - name: Set up Python
       uses: actions/setup-python@v5
       with:
         python-version: '3.x'
+
     - name: Install Poetry
       run: |
         pip install --upgrade pip
         pip install poetry
+    
     - name: Build and publish to PyPI
       env:
         POETRY_PYPI_TOKEN_PYPI: ${{ secrets.PYPI_API_TOKEN }}
       run: |
+        poetry config virtualenvs.create false
         poetry build
         poetry publish
