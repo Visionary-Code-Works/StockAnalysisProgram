@@ -1,9 +1,9 @@
 # Workflow
 
-[Home](../README.md)
-[Fetcher](./Fetcher.md)
-[Plotter](./Plotter.md)
-[Documentation](./documentation.md)
+- [Home](../README.md)
+- [Fetcher](./Fetcher.md)
+- [Plotter](./Plotter.md)
+- [Documentation](./documentation.md)
 
 ## Main Workflow
 
