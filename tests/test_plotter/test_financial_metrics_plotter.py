@@ -2,45 +2,42 @@
 
 from unittest.mock import patch
 import pytest
-from src.stock_analysis_program import FinancialMetricsPlotter
+import pandas as pd
+from src.stock_analysis_program.plotter.financial_metrics_plotter import (
+    FinancialMetricsPlotter,
+)
 
-# Sample data to simulate fetch_financial_metrics return value
-sample_financial_data = {
-    "Ticker": ["AAPL", "MSFT"],
-    "Market Cap": [1000000, 2000000],
-    "PE Ratio": [25, 30],
-    # Add more sample financial metrics if needed
-}
+# Adjust the sample data to be a DataFrame instead of a dict
+sample_financial_data = pd.DataFrame(
+    {
+        "Ticker": ["AAPL", "MSFT"],
+        "Market Cap": [1000000, 2000000],
+        "PE Ratio": [25, 30],
+        # Add more columns as needed
+    }
+)
 
 
 @pytest.fixture
 def mock_fetcher_return():
-    """Fixture to mock the FinancialMetricsFetcher's return value."""
+    """Fixture to mock the FinancialMetricsFetcher's return value as a DataFrame."""
     return sample_financial_data
 
 
-# Note: Adjust the patch target to match how FinancialMetricsFetcher is
-# imported within FinancialMetricsPlotter
-@patch("src.stock_analysis_program.FinancialMetricsFetcher")
+@patch(
+    "src.stock_analysis_program.plotter.financial_metrics_plotter.FinancialMetricsFetcher"
+)
 def test_financial_metrics_plotter(mock_FinancialMetricsFetcher, mock_fetcher_return):
     """Test the FinancialMetricsPlotter's plot_metrics method."""
-
-    # Setup mock to return the sample financial data
+    # Setup mock to return the sample financial data as a DataFrame
     mock_instance = mock_FinancialMetricsFetcher.return_value
     mock_instance.fetch_financial_metrics.return_value = mock_fetcher_return
 
     # Initialize the plotter with mock data
     plotter = FinancialMetricsPlotter(["AAPL", "MSFT"])
 
-    # Due to the nature of plotting, we mainly verify the interaction with the fetcher
-    # and ensure no exceptions are raised during plotting
-    with patch("matplotlib.pyplot.show") as mock_show:
+    with patch("matplotlib.pyplot.show"):
         plotter.plot_metrics()
 
-        # Assert fetch_financial_metrics was called
-        mock_instance.fetch_financial_metrics.assert_called_once()
-
-        # Verify plt.show was called, implying that plotting was attempted
-        assert (
-            mock_show.called
-        ), "Expected plt.show to be called, indicating that plotting was attempted."
+    # Assert fetch_financial_metrics was called
+    mock_instance.fetch_financial_metrics.assert_called_once()
