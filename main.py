@@ -9,7 +9,7 @@ stock analysis options, including data fetching, summary retrieval, and various
 plotting capabilities for stocks and financial indices.
 """
 
-from . import (
+from src.stock_analysis_program import (
     StockDataFetcher,
     StockSummaryFetcher,
     FinancialMetricsFetcher,
@@ -219,18 +219,20 @@ def main():
     visualization. The script runs in a loop until the user chooses to exit.
     """
     while True:
-        print("\nStock Data Analysis Menu")
-        print("1. Use Stock Data Fetcher")
-        print("2. Use Stock Summary Fetcher")
-        print("3. Use Financial Metrics Fetcher")
-        print("4. Use Revenue Growth Fetcher")
-        print("5. Use Stock Price Plotter")
-        print("6. Use Financial Metrics Plotter")
-        print("7. Use Revenue Growth Plotter")
-        print("8. Use Stock Volatility Plotter")
-        print("9. Use Stock Exchange Performance Plotter")
-        print("10. Use Current Prices Ticker Display")
-        print("0. Exit")
+        print(
+            "\nStock Data Analysis Menu\n",
+            "1. Use Stock Data Fetcher\n",
+            "2. Use Stock Summary Fetcher\n",
+            "3. Use Financial Metrics Fetcher\n",
+            "4. Use Revenue Growth Fetcher\n",
+            "5. Use Stock Price Plotter\n",
+            "6. Use Financial Metrics Plotter\n",
+            "7. Use Revenue Growth Plotter\n",
+            "8. Use Stock Volatility Plotter\n",
+            "9. Use Stock Exchange Performance Plotter\n",
+            "10. Use Current Prices Ticker Display\n",
+            "0. Exit\n"
+        )
 
         choice = input("Enter your choice: ")
 
