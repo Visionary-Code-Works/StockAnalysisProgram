@@ -3,9 +3,9 @@
 [![Upload Python Package](https://github.com/Visionary-Code-Works/stock-analysis-program/actions/workflows/python_publish.yml/badge.svg)](https://github.com/Visionary-Code-Works/stock-analysis-program/actions/workflows/python_publish.yml)
 
 - [Home](../README.md)
-- [Workflow](./Workflow.md)
-- [Plotter](./Plotter.md)
 - [Fetcher](./Fetcher.md)
+- [Plotter](./Plotter.md)
+- [Workflow](./Workflow.md)
 
 ## Overview
 

@@ -9,7 +9,7 @@ stock analysis options, including data fetching, summary retrieval, and various
 plotting capabilities for stocks and financial indices.
 """
 
-from .__init__ import (
+from . import (
     StockDataFetcher,
     StockSummaryFetcher,
     FinancialMetricsFetcher,
