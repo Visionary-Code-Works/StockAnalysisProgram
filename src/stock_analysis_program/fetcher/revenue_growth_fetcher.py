@@ -12,6 +12,7 @@ different companies, aiding in investment decisions and market analysis.
 
 import yfinance as yf
 
+
 class RevenueGrowthFetcher:
     """
     Fetches year-over-year revenue growth for a list of stock tickers.
@@ -43,10 +44,14 @@ class RevenueGrowthFetcher:
         for ticker in self.tickers:
             company = yf.Ticker(ticker)
             income_statement = company.financials
-            if 'Total Revenue' in income_statement.index:
-                revenue = income_statement.loc['Total Revenue']
-                revenue_growth = revenue.pct_change(periods=-1)  # Negative periods for year-over-year growth
-                growth_data[ticker] = revenue_growth.dropna().iloc[0]  # Most recent growth value
+            if "Total Revenue" in income_statement.index:
+                revenue = income_statement.loc["Total Revenue"]
+                revenue_growth = revenue.pct_change(
+                    periods=-1
+                )  # Negative periods for year-over-year growth
+                growth_data[ticker] = revenue_growth.dropna().iloc[
+                    0
+                ]  # Most recent growth value
             else:
                 growth_data[ticker] = None
         return growth_data
