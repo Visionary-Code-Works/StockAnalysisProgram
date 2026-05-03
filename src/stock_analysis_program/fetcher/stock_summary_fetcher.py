@@ -12,6 +12,8 @@ stock market research.
 
 import yfinance as yf
 
+from .._utils import normalize_tickers
+
 class StockSummaryFetcher:
     """
     A class that fetches summary information for a list of stock tickers.
@@ -34,7 +36,7 @@ class StockSummaryFetcher:
             summary information is to be fetched. Can be a single ticker (str)
             or a list of tickers.
         """
-        self.tickers = tickers if isinstance(tickers, list) else [tickers]
+        self.tickers = normalize_tickers(tickers)
 
     def fetch_summary(self, ticker):
         """

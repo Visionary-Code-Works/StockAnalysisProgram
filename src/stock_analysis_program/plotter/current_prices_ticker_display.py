@@ -13,6 +13,8 @@ import os
 import time
 import yfinance as yf
 
+from .._utils import normalize_tickers
+
 class CurrentPricesTickerDisplay:
     """
     A class for displaying current prices of a list of stock tickers in a
@@ -34,7 +36,7 @@ class CurrentPricesTickerDisplay:
             interval (int, optional): Time interval in seconds between updates
             of the ticker display. Defaults to 10 seconds.
         """
-        self.tickers = tickers if isinstance(tickers, list) else [tickers]
+        self.tickers = normalize_tickers(tickers)
         self.interval = interval
 
     def fetch_current_prices(self):

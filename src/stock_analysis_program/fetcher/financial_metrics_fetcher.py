@@ -13,6 +13,8 @@ compare fundamental financial metrics of various companies.
 import yfinance as yf
 import pandas as pd
 
+from .._utils import normalize_tickers
+
 class FinancialMetricsFetcher:
     """
     A class that fetches financial metrics for a list of stock tickers.
@@ -33,7 +35,7 @@ class FinancialMetricsFetcher:
             tickers (list of str): A list of stock ticker symbols (e.g.,
             ['AAPL', 'MSFT']) for which financial metrics are to be fetched.
         """
-        self.tickers = tickers if isinstance(tickers, list) else [tickers]
+        self.tickers = normalize_tickers(tickers)
 
     def fetch_financial_metrics(self):
         """
@@ -49,8 +51,6 @@ class FinancialMetricsFetcher:
             for each financial metric.
         """
         financial_data_list = []
-
-        financial_data = pd.DataFrame()
         for ticker in self.tickers:
             stock = yf.Ticker(ticker)
             info = stock.info

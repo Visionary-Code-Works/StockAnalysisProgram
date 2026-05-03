@@ -80,7 +80,7 @@ flowchart LR
 Each fetcher class can be used independently to retrieve specific data. For example:
 
 ```python
-from fetcher.stock_summary_fetcher import StockSummaryFetcher
+from stock_analysis_program import StockSummaryFetcher
 
 # Fetching stock summaries
 summary_fetcher = StockSummaryFetcher(['AAPL', 'MSFT'])
@@ -93,7 +93,7 @@ print(summaries)
 Plotters are used for visualizing data. They often depend on fetchers to get the necessary data. For example:
 
 ```python
-from plotter.stock_price_plotter import StockPricePlotter
+from stock_analysis_program import StockPricePlotter
 
 # Plotting stock prices
 price_plotter = StockPricePlotter(['AAPL', 'MSFT'])
@@ -121,8 +121,7 @@ To extend the program:
 Here's an example of how to integrate multiple components in a larger program:
 
 ```python
-from fetcher.revenue_growth_fetcher import RevenueGrowthFetcher
-from plotter.revenue_growth_plotter import RevenueGrowthPlotter
+from stock_analysis_program import RevenueGrowthFetcher, RevenueGrowthPlotter
 
 def plot_revenue_growth(tickers):
     # Fetching revenue growth

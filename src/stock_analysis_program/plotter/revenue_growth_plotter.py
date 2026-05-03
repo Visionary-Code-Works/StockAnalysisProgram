@@ -32,7 +32,7 @@ class RevenueGrowthPlotter:
         """
         self.fetcher = RevenueGrowthFetcher(tickers)
 
-    def plot_revenue_growth(self):
+    def plot_revenue_growth(self, show=True):
         """
         Plots the year-over-year revenue growth for each ticker.
 
@@ -42,14 +42,20 @@ class RevenueGrowthPlotter:
         """
         revenue_growth = self.fetcher.fetch_revenue_growth()
 
-        # Prepare data for plotting
-        tickers = list(revenue_growth.keys())
-        growth_values = list(revenue_growth.values())
+        filtered = {
+            ticker: growth
+            for ticker, growth in revenue_growth.items()
+            if growth is not None
+        }
+        tickers = list(filtered.keys())
+        growth_values = list(filtered.values())
 
-        plt.figure(figsize=(10, 6))
-        plt.bar(tickers, growth_values, color='green')
-        plt.title('Year-over-Year Revenue Growth')
-        plt.xlabel('Ticker')
-        plt.ylabel('Growth (%)')
-        plt.grid(True)
-        plt.show()
+        fig, ax = plt.subplots(figsize=(10, 6))
+        ax.bar(tickers, growth_values, color="green")
+        ax.set_title("Year-over-Year Revenue Growth")
+        ax.set_xlabel("Ticker")
+        ax.set_ylabel("Growth (%)")
+        ax.grid(True)
+        if show:
+            plt.show()
+        return fig, ax

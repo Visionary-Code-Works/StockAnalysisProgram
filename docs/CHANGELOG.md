@@ -1,3 +1,13 @@
+## v1.2.0
+
+- Added the `stock-analysis` console command through the package metadata.
+- Moved CLI behavior into `stock_analysis_program.cli` and kept root `main.py` as a compatibility wrapper.
+- Standardized public imports around `stock_analysis_program`.
+- Updated plotter methods to return Matplotlib figure/axes objects and support `show=False`.
+- Added ticker normalization and clearer empty-data validation for fetchers and plotters.
+- Replaced network-dependent tests with mocked provider tests.
+- Updated README and documentation examples for PyPI installation and package imports.
+
 To rewrite the provided code as a set of classes, we need to organize the functionalities into logical units that represent distinct aspects of the operations. The code you provided contains various functions for fetching and analyzing stock data using the `yfinance` library. Here's how we can organize these functionalities into classes:
 
 1. **StockAveragesFetcher**: Handles the fetching and calculation of moving averages and average trading volume for a single stock ticker.

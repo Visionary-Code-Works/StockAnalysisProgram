@@ -1,9 +1,9 @@
-# tests/test_fetcher/test_financial_metrics_fetcher.py
-
 from unittest.mock import patch
-import pytest
+
 import pandas as pd
-from src.stock_analysis_program.plotter.financial_metrics_plotter import (
+import pytest
+
+from stock_analysis_program.plotter.financial_metrics_plotter import (
     FinancialMetricsPlotter,
 )
 
@@ -24,9 +24,7 @@ def mock_fetcher_return():
     return sample_financial_data
 
 
-@patch(
-    "src.stock_analysis_program.plotter.financial_metrics_plotter.FinancialMetricsFetcher"
-)
+@patch("stock_analysis_program.plotter.financial_metrics_plotter.FinancialMetricsFetcher")
 def test_financial_metrics_plotter(mock_FinancialMetricsFetcher, mock_fetcher_return):
     """Test the FinancialMetricsPlotter's plot_metrics method."""
     # Setup mock to return the sample financial data as a DataFrame
@@ -36,8 +34,8 @@ def test_financial_metrics_plotter(mock_FinancialMetricsFetcher, mock_fetcher_re
     # Initialize the plotter with mock data
     plotter = FinancialMetricsPlotter(["AAPL", "MSFT"])
 
-    with patch("matplotlib.pyplot.show"):
-        plotter.plot_metrics()
+    figures = plotter.plot_metrics(show=False)
 
     # Assert fetch_financial_metrics was called
     mock_instance.fetch_financial_metrics.assert_called_once()
+    assert len(figures) == 2
