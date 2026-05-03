@@ -1,8 +1,14 @@
-# tests/test_fetcher/test_stock_summary_fetcher.py
+from unittest.mock import Mock, patch
 
-import pytest
-from src.stock_analysis_program import StockSummaryFetcher
+from stock_analysis_program import StockSummaryFetcher
 
-def test_stock_summary_fetcher_initialization():
-    fetcher = StockSummaryFetcher(["AAPL"])
-    assert fetcher is not None, "StockSummaryFetcher should be initialized."
+def test_stock_summary_fetcher_returns_summary():
+    stock = Mock()
+    stock.info = {"longName": "Apple Inc.", "sector": "Technology"}
+
+    with patch("stock_analysis_program.fetcher.stock_summary_fetcher.yf.Ticker", return_value=stock):
+        fetcher = StockSummaryFetcher(["aapl"])
+        summaries = fetcher.get_summaries()
+
+    assert summaries[0]["Ticker"] == "AAPL"
+    assert summaries[0]["Name"] == "Apple Inc."

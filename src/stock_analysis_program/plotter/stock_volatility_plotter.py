@@ -10,6 +10,8 @@ profile and stability of stocks.
 import yfinance as yf
 import matplotlib.pyplot as plt
 
+from .._utils import normalize_tickers, require_columns
+
 
 class StockVolatilityPlotter:
     """
@@ -26,9 +28,9 @@ class StockVolatilityPlotter:
         Args:
             tickers (list of str): Stock tickers to analyze for volatility.
         """
-        self.tickers = tickers if isinstance(tickers, list) else [tickers]
+        self.tickers = normalize_tickers(tickers)
 
-    def plot_volatility(self, start_date, end_date, window_size=30):
+    def plot_volatility(self, start_date, end_date, window_size=30, show=True):
         """
         Calculates and plots the rolling volatility for each ticker.
 
@@ -38,20 +40,23 @@ class StockVolatilityPlotter:
             window_size (int, optional): Window size in days for calculating
             rolling volatility. Defaults to 30.
         """
-        plt.figure(figsize=(12, 8))
+        fig, ax = plt.subplots(figsize=(12, 8))
 
         for ticker in self.tickers:
             data = yf.download(ticker, start=start_date, end=end_date)
+            require_columns(data, ["Close"], ticker)
             # Calculate daily returns
             daily_returns = data['Close'].pct_change()
             # Calculate rolling standard deviation (volatility)
             rolling_volatility = daily_returns.rolling(window=window_size).std() * (252 ** 0.5)  # Annualized
 
-            plt.plot(rolling_volatility, label=f'{ticker} Volatility')
+            ax.plot(rolling_volatility, label=f'{ticker} Volatility')
 
-        plt.title(f'{window_size}-Day Rolling Volatility (Annualized)')
-        plt.xlabel('Date')
-        plt.ylabel('Volatility')
-        plt.legend()
-        plt.grid(True)
-        plt.show()
+        ax.set_title(f'{window_size}-Day Rolling Volatility (Annualized)')
+        ax.set_xlabel('Date')
+        ax.set_ylabel('Volatility')
+        ax.legend()
+        ax.grid(True)
+        if show:
+            plt.show()
+        return fig, ax

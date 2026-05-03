@@ -1,8 +1,14 @@
-# tests/test_plotter/test_revenue_growth_plotter.py
+from unittest.mock import patch
 
-import pytest
-from src.stock_analysis_program import RevenueGrowthPlotter
+from stock_analysis_program import RevenueGrowthPlotter
 
-def test_revenue_growth_plotter_initialization():
-    plotter = RevenueGrowthPlotter(["AAPL"])
-    assert plotter is not None, "RevenueGrowthPlotter should be initialized."
+def test_revenue_growth_plotter_returns_figure():
+    with patch(
+        "stock_analysis_program.plotter.revenue_growth_plotter.RevenueGrowthFetcher"
+    ) as fetcher:
+        fetcher.return_value.fetch_revenue_growth.return_value = {"AAPL": 0.2}
+        plotter = RevenueGrowthPlotter(["AAPL"])
+        fig, ax = plotter.plot_revenue_growth(show=False)
+
+    assert fig is not None
+    assert len(ax.patches) == 1

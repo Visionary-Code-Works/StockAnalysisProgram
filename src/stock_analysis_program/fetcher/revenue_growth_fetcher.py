@@ -12,6 +12,8 @@ different companies, aiding in investment decisions and market analysis.
 
 import yfinance as yf
 
+from .._utils import normalize_tickers
+
 
 class RevenueGrowthFetcher:
     """
@@ -29,7 +31,7 @@ class RevenueGrowthFetcher:
             tickers (list of str): Stock tickers to fetch the revenue growth
             for.
         """
-        self.tickers = tickers if isinstance(tickers, list) else [tickers]
+        self.tickers = normalize_tickers(tickers)
 
     def fetch_revenue_growth(self):
         """
@@ -44,14 +46,15 @@ class RevenueGrowthFetcher:
         for ticker in self.tickers:
             company = yf.Ticker(ticker)
             income_statement = company.financials
-            if "Total Revenue" in income_statement.index:
+            if not income_statement.empty and "Total Revenue" in income_statement.index:
                 revenue = income_statement.loc["Total Revenue"]
                 revenue_growth = revenue.pct_change(
                     periods=-1
                 )  # Negative periods for year-over-year growth
-                growth_data[ticker] = revenue_growth.dropna().iloc[
-                    0
-                ]  # Most recent growth value
+                revenue_growth = revenue_growth.dropna()
+                growth_data[ticker] = (
+                    revenue_growth.iloc[0] if not revenue_growth.empty else None
+                )
             else:
                 growth_data[ticker] = None
         return growth_data

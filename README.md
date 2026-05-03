@@ -15,12 +15,16 @@ The Stock Analysis Program is a Python-based toolkit designed to fetch and visua
 
 ## Installation
 
-To use this program, ensure you have Python installed on your system. Clone this repository and install the required dependencies:
+Install the package from PyPI:
 
 ```bash
-git clone https://github.com/visionary-code-works/stock-analysis-program.git
-cd stock-analysis-program
-pip install -r requirements.txt
+pip install stock-analysis-program
+```
+
+The package also installs a small command-line menu:
+
+```bash
+stock-analysis
 ```
 
 ## Usage
@@ -46,11 +50,22 @@ The program consists of multiple Python classes categorized into Fetchers and Pl
 ### Example
 
 ```python
-from plotter.stock_price_plotter import StockPricePlotter
+from stock_analysis_program import StockPricePlotter
 
 # Plotting stock prices for Apple and Microsoft
 price_plotter = StockPricePlotter(['AAPL', 'MSFT'])
 price_plotter.plot_closing_prices('2021-01-01', '2021-12-31')
+```
+
+Plotter methods return Matplotlib figure and axes objects for notebook,
+testing, or dashboard usage:
+
+```python
+figures = price_plotter.plot_closing_prices(
+    '2021-01-01',
+    '2021-12-31',
+    show=False,
+)
 ```
 
 ## Documentation

@@ -225,3 +225,4 @@ $RECYCLE.BIN/
 
 .vscode/
 archive/
+pytest-cache-files-*/

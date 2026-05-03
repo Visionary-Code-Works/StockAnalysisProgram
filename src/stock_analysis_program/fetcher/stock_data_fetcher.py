@@ -12,6 +12,8 @@ detailed stock analysis with ease.
 
 import yfinance as yf
 
+from .._utils import require_columns
+
 
 class StockDataFetcher:
     """
@@ -30,8 +32,10 @@ class StockDataFetcher:
             ticker (str): The stock ticker symbol for which the data is to be
             fetched.
         """
-        self.ticker = ticker
-        self.stock = yf.Ticker(ticker)
+        self.ticker = str(ticker).strip().upper()
+        if not self.ticker:
+            raise ValueError("A ticker symbol is required.")
+        self.stock = yf.Ticker(self.ticker)
 
     def fetch_historical_data(self, period="1y"):
         """
@@ -45,9 +49,11 @@ class StockDataFetcher:
             pandas.DataFrame: A DataFrame containing historical stock data for
             the specified period.
         """
-        return self.stock.history(period=period)
+        data = self.stock.history(period=period)
+        require_columns(data, ["Close", "Volume"], self.ticker)
+        return data
 
-    def calculate_moving_averages(self, data, window_sizes=[20, 50, 200]):
+    def calculate_moving_averages(self, data, window_sizes=None):
         """
         Calculates and returns moving averages for given window sizes.
 
@@ -60,6 +66,8 @@ class StockDataFetcher:
             dict: A dictionary with keys as window sizes and values as the
             corresponding moving averages.
         """
+        window_sizes = window_sizes or [20, 50, 200]
+        require_columns(data, ["Close"], self.ticker)
         moving_averages = {}
         for window in window_sizes:
             ma = data["Close"].rolling(window=window).mean()
@@ -76,6 +84,7 @@ class StockDataFetcher:
         Returns:
             float: The average trading volume for the stock.
         """
+        require_columns(data, ["Volume"], self.ticker)
         return data["Volume"].mean()
 
     def get_financial_metrics(self):

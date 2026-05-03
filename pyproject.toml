@@ -1,41 +1,47 @@
-[tool.poetry]
+[project]
 name = "stock-analysis-program"
-version = "1.0.8"
+version = "1.2.0"
 description = "A Python-based toolkit for fetching and visualizing financial data and metrics for stocks."
 readme = "README.md"
+requires-python = ">=3.11,<4.0"
 authors = [
-    "Thaddeus Thomas <thaddeus.r.thomas@gmail.com>",
-    "Fernando McKenzie <fernando.a.mckenzie@live.com>"
+    { name = "Thaddeus Thomas", email = "thaddeus.r.thomas@gmail.com" },
+    { name = "Fernando McKenzie", email = "fernando.a.mckenzie@live.com" },
 ]
 license = "MIT"
-homepage = "https://vcwtech.com/stock-analysis-program"
-repository = "https://github.com/visionary-code-works/stock-analysis-program"
-documentation = "https://github.com/visionary-code-works/stock-analysis-program/docs"
 classifiers = [
     "Programming Language :: Python :: 3",
-    "License :: OSI Approved :: MIT License",
     "Operating System :: OS Independent",
     "Intended Audience :: Financial and Insurance Industry",
     "Topic :: Office/Business :: Financial :: Investment",
     "Development Status :: 4 - Beta"
 ]
+dependencies = [
+    "yfinance>=0.2.37,<0.3.0",
+    "matplotlib>=3.8.3,<4.0.0",
+    "pandas>=2.2.1,<3.0.0",
+]
+
+[project.urls]
+Homepage = "https://vcwtech.com/stock-analysis-program"
+Repository = "https://github.com/visionary-code-works/stock-analysis-program"
+Documentation = "https://github.com/visionary-code-works/stock-analysis-program/tree/main/docs"
+
+[project.scripts]
+stock-analysis = "stock_analysis_program.cli:main"
+
+[tool.poetry]
 packages = [
     { include = "stock_analysis_program", from = "src" },
 ]
 
-[tool.poetry.dependencies]
-python = "^3.11"
-yfinance = "^0.2.37"
-matplotlib = "^3.8.3"
-pandas = "^2.2.1"
-
-[tool.poetry.dev-dependencies]
+[tool.poetry.group.dev.dependencies]
 pytest = "^8.1.1"
 
-[[tool.poetry.source]]
-name = "StockAnalysisProgram"
-url = "https://github.com/Visionary-Code-Works/StockAnalysisProgram"
-priority = "primary"
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+norecursedirs = [".git", ".pytest_cache", "pytest-cache-files-*"]
+addopts = "-p no:cacheprovider"
 
 [build-system]
 requires = ["poetry>=1.8.2"]

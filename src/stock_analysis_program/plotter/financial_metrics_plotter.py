@@ -12,7 +12,7 @@ etc., across multiple stocks.
 
 import matplotlib.pyplot as plt
 import pandas as pd
-from src.stock_analysis_program.fetcher.financial_metrics_fetcher import FinancialMetricsFetcher
+from ..fetcher.financial_metrics_fetcher import FinancialMetricsFetcher
 
 class FinancialMetricsPlotter:
     """A class for plotting financial metrics of stocks.
@@ -35,7 +35,7 @@ class FinancialMetricsPlotter:
         """
         self.fetcher = FinancialMetricsFetcher(tickers)
 
-    def plot_metrics(self):
+    def plot_metrics(self, show=True):
         """Plots histograms of financial metrics for the given tickers.
 
         Fetches financial metrics using the FinancialMetricsFetcher instance
@@ -47,15 +47,20 @@ class FinancialMetricsPlotter:
         """
         financial_data = self.fetcher.fetch_financial_metrics()
 
+        figures = []
         for column in financial_data.columns[1:]:  # Skip the 'Ticker' column
-            plt.figure(figsize=(10, 6))
-            # Check if the data is numeric and not empty
-            if pd.to_numeric(financial_data[column], errors='coerce').notnull().all():
-                plt.hist(financial_data[column].dropna(), bins=15, alpha=0.7)
-                plt.title(f'Histogram of {column} for Selected Stocks')
-                plt.xlabel(column)
-                plt.ylabel('Frequency')
-                plt.grid(True)
+            numeric_values = pd.to_numeric(financial_data[column], errors="coerce").dropna()
+            if numeric_values.empty:
+                continue
+
+            fig, ax = plt.subplots(figsize=(10, 6))
+            ax.hist(numeric_values, bins=15, alpha=0.7)
+            ax.set_title(f"Histogram of {column} for Selected Stocks")
+            ax.set_xlabel(column)
+            ax.set_ylabel("Frequency")
+            ax.grid(True)
+            figures.append((fig, ax))
+            if show:
                 plt.show()
-            else:
-                print(f"Skipping histogram for {column} as it contains non-numeric data.")
+
+        return figures
